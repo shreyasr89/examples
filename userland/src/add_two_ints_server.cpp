@@ -22,6 +22,7 @@ void add(const std::shared_ptr<userland_msgs::AddTwoIntsRequest> req,
          std::shared_ptr<userland_msgs::AddTwoIntsResponse> res)
 {
   std::cout << "Incoming request" << std::endl;
+  std::cout << "a: " << req->a << " b: " << req->b << std::endl;
   res->sum = req->a + req->b;
 }
 

@@ -11,7 +11,10 @@ find_package(rosidl_default_generators REQUIRED)
 include_directories(${rosidl_default_generators_INCLUDE_DIRS})
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/RequestId.msg"
+  "msg/GUID.msg"
+  "msg/SampleIdentity.msg"
+  "msg/ReplyHeader.msg"
+  "msg/RequestHeader.msg"
   "srv/AddTwoInts.srv"
   DEPENDENCIES builtin_msgs
 )
