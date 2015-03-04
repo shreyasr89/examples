@@ -22,28 +22,28 @@ repositories:
   ros2/examples:
     type: git
     url: https://github.com/ros2/examples.git
-    version: master
+    version: pre_api_review
   ros2/rclcpp:
     type: git
     url: https://github.com/ros2/rclcpp.git
-    version: master
+    version: pre_api_review
   ros2/ros_middleware_connext:
     type: git
     url: https://github.com/ros2/ros_middleware_connext.git
-    version: master
+    version: pre_api_review
   ros2/ros_middleware_interface:
     type: git
     url: https://github.com/ros2/ros_middleware_interface.git
-    version: master
+    version: pre_api_review
   ros2/ros_middleware_opensplice:
     type: git
     url: https://github.com/ros2/ros_middleware_opensplice.git
-    version: master
+    version: pre_api_review
   ros2/rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
-    version: master
+    version: pre_api_review
   ros2/rosidl_dds:
     type: git
     url: https://github.com/ros2/rosidl_dds.git
-    version: master
+    version: pre_api_review
