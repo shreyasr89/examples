@@ -29,7 +29,12 @@ int main(int argc, char ** argv)
   std::cout << "Parameter (foo) found: " << (found ? "true" : "false") << std::endl;
 
   const std::vector<rclcpp::parameter::ParameterContainer> kv = {
-    rclcpp::parameter::ParameterContainer("foo", value1)
+    rclcpp::parameter::ParameterContainer("foo", value1),
+    rclcpp::parameter::ParameterContainer("foo.one", value1),
+    rclcpp::parameter::ParameterContainer("foo.two", value1),
+    rclcpp::parameter::ParameterContainer("foo.two.one", value1),
+    rclcpp::parameter::ParameterContainer("foo.two.one.one", value1),
+    rclcpp::parameter::ParameterContainer("foo.two.one.two", value1),
   };
 
   auto f4 = node->async_set_parameters(node_name, kv);
@@ -55,6 +60,31 @@ int main(int argc, char ** argv)
   }
     );
   rclcpp::spin_until_future_complete<int64_t>(node, f7);
+
+  std::vector<parameter::ParameterName> pg = {"foo"};
+  auto f8 = node->async_list_parameters(node_name, pn, false);
+  rclcpp::spin_until_future_complete<std::vector<parameter::ParameterName>>(node, f8);
+  auto subgroups = f8.get();
+  for (auto subgroup : subgroups) {
+    std::cout << "Subgroups for group (foo): " << subgroup << std::endl;
+  }
+
+  pg = {"foo.two"};
+  auto f9 = node->async_list_parameters(node_name, pg, false);
+  rclcpp::spin_until_future_complete<std::vector<parameter::ParameterName>>(node, f9);
+  subgroups = f9.get();
+  for (auto subgroup : subgroups) {
+    std::cout << "Subgroups for group (foo.two): " << subgroup << std::endl;
+  }
+
+  pg = {"foo"};
+  auto f10 = node->async_list_parameters(node_name, pg, true);
+  rclcpp::spin_until_future_complete<std::vector<parameter::ParameterName>>(node, f10);
+  subgroups = f10.get();
+  for (auto subgroup : subgroups) {
+    std::cout << "Subgroups for group (foo): " << subgroup << std::endl;
+  }
+
   rclcpp::spin(node);
 
   return 0;
