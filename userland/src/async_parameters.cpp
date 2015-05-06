@@ -20,7 +20,7 @@ int main(int argc, char ** argv)
 
   auto node = rclcpp::Node::make_shared("parameters");
 
-  auto parameters_client = std::make_shared<rclcpp::parameter::AsyncParametersClient>(node);
+  auto parameters_client = std::make_shared<rclcpp::parameter_client::AsyncParametersClient>(node);
 
   auto parameters = {
     rclcpp::parameter::ParameterVariant("foo", 2),
@@ -54,15 +54,15 @@ int main(int argc, char ** argv)
         break;
       case rclcpp::parameter::ParameterType::PARAMETER_INTEGER:
         std::cout << "(integer): " <<
-        p.get_value<rclcpp::parameter::ParameterType::PARAMETER_INTEGER>();
+          p.get_value<rclcpp::parameter::ParameterType::PARAMETER_INTEGER>();
         break;
       case rclcpp::parameter::ParameterType::PARAMETER_DOUBLE:
         std::cout << "(double): " <<
-        p.get_value<rclcpp::parameter::ParameterType::PARAMETER_DOUBLE>();
+          p.get_value<rclcpp::parameter::ParameterType::PARAMETER_DOUBLE>();
         break;
       case rclcpp::parameter::ParameterType::PARAMETER_STRING:
         std::cout << "(string): " <<
-        p.get_value<rclcpp::parameter::ParameterType::PARAMETER_STRING>();
+          p.get_value<rclcpp::parameter::ParameterType::PARAMETER_STRING>();
         break;
       case rclcpp::parameter::ParameterType::PARAMETER_BYTES:
         std::cout << "(bytes)";
